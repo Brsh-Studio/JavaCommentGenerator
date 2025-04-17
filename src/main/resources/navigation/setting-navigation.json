@@ -1,0 +1,30 @@
+[
+  {
+    "name": "通用",
+    "panel": "General",
+    "children": [
+      {
+        "name": "主题配置",
+        "panel": "Theme"
+      }
+    ]
+  },
+  {
+    "name": "模型参数",
+    "panel": "ModelArgs",
+    "children": [
+      {
+        "name": "模型配置",
+        "panel": "Args"
+      },
+      {
+        "name": "提示词设置",
+        "panel": "Prompt"
+      }
+    ]
+  },
+  {
+    "name": "日志管理",
+    "panel": "Logger"
+  }
+]

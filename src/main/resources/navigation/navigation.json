@@ -1,0 +1,42 @@
+[
+  {
+    "name": "通用",
+    "children": [
+      {
+        "name": "设置",
+        "action": "showSettings",
+        "shortKey": "{Ctrl}{Alt}{I}"
+      },
+      {
+        "name": "预设路径",
+        "action": "showPresetPath",
+        "shortKey": "{Ctrl}{Alt}{P}"
+      }
+    ]
+  },
+  {
+    "name": "关于",
+    "children": [
+      {
+        "name": "帮助",
+        "action": "showHelp",
+        "shortKey": "{Ctrl}{Alt}{H}"
+      },
+      {
+        "name": "检查更新",
+        "action": "checkUpdate",
+        "shortKey": "{Ctrl}{Alt}{U}"
+      },
+      {
+        "name": "关于我们",
+        "action": "showAbout",
+        "shortKey": "{Ctrl}{Alt}{A}"
+      },
+      {
+        "name": "退出",
+        "action": "exit",
+        "shortKey": "{Ctrl}{Alt}{Q}"
+      }
+    ]
+  }
+]
