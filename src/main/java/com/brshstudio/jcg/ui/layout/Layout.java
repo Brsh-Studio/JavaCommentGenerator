@@ -30,7 +30,7 @@ public class Layout extends I18nFrame {
     private final JTextArea logArea = new JTextArea(15, 50);
 
     public Layout() {
-        super("不染伤痕注释生成器 v1.0.0.1");
+        super("不染伤痕注释生成器 v1.0.1.1");
         initializeUI();
     }
 

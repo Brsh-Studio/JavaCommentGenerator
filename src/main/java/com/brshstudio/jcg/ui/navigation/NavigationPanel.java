@@ -173,7 +173,7 @@ public class NavigationPanel extends I18nPanel {
      */
     @SuppressWarnings("unused")
     private void checkUpdate(ActionEvent e) {
-        JOptionPane.showMessageDialog(MainApplication.gui, "已是最新版本：v1.0.0.1", "检查更新", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(MainApplication.gui, "已是最新版本：v1.0.1.1", "检查更新", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -181,7 +181,7 @@ public class NavigationPanel extends I18nPanel {
      */
     @SuppressWarnings("unused")
     private void showAbout(ActionEvent e) {
-        JOptionPane.showMessageDialog(MainApplication.gui, "Notes Generator\nVersion 1.0.0.1\nCopyright © 2025 不染伤痕工作室", "关于", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(MainApplication.gui, "Notes Generator\nVersion 1.0.1.1\nCopyright © 2025 不染伤痕工作室", "关于", JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**

@@ -6,7 +6,7 @@
 
     <groupId>com.brshstudio</groupId>
     <artifactId>java-comment-generator</artifactId>
-    <version>1.0.0.1</version>
+    <version>1.0.1.1</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -96,15 +96,15 @@
                             </jre>
                             <versionInfo>
                                 <!-- 四段式数字版本号 -->
-                                <fileVersion>1.0.0.1</fileVersion>
+                                <fileVersion>1.0.1.1</fileVersion>
                                 <!-- 自由格式版本字符串 -->
-                                <txtFileVersion>v1.0.0.1-release</txtFileVersion>
+                                <txtFileVersion>v1.0.1.1-release</txtFileVersion>
                                 <fileDescription>CommentGenerator</fileDescription>
                                 <copyright>Copyright © 2025-2025</copyright>
                                 <!-- 四段式产品版本号 -->
-                                <productVersion>1.0.0.1</productVersion>
+                                <productVersion>1.0.1.1</productVersion>
                                 <!-- 自由格式产品版本 -->
-                                <txtProductVersion>1.0.0.1</txtProductVersion>
+                                <txtProductVersion>1.0.1.1</txtProductVersion>
                                 <productName>CommentGenerator</productName>
                                 <internalName>CommentGenerator</internalName>
                                 <originalFilename>CommentGenerator.exe</originalFilename>

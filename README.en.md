@@ -46,7 +46,7 @@
     mvn clean package -DskipTests
     
     # Run the application
-    java -jar target/java-comment-generator-1.0.0.1.jar
+    java -jar target/java-comment-generator-1.0.1.1.jar
 ```
 
 #### Method 2: Download the exe file directly

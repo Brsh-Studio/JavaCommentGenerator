@@ -47,7 +47,7 @@ cd java-comment-generator
 mvn clean package -DskipTests
 
 # 运行应用程序
-java -jar target/java-comment-generator-1.0.0.1.jar
+java -jar target/java-comment-generator-1.0.1.1.jar
 ```
 
 #### 方式二：直接下载exe文件
