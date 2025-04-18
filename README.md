@@ -1,7 +1,7 @@
-# JavaCommentGenerator
+# **Java注释生成器**
 
 ## 项目介绍
-JavaCommentGenerator 是一款基于图形化界面的 Java 代码注释生成工具，通过类声明，方法声明，字段声明自动生成JavaDoc。
+**Java注释生成器** 是一款基于图形化界面的 Java 代码注释生成工具，通过类声明，方法声明，字段声明自动生成JavaDoc。
 
 ## 功能特点
 ✅ AI 提示词自定义

@@ -1,5 +1,8 @@
 package com.brshstudio.jcg.ui.setting.panels;
 
+import com.brshstudio.jcg.i18n.jcomponents.I18nButton;
+import com.brshstudio.jcg.i18n.jcomponents.I18nPanel;
+import com.brshstudio.jcg.i18n.jcomponents.I18nTitledBorder;
 import com.brshstudio.jcg.ui.setting.panels.base.AbstractSettingsPanel;
 import com.brshstudio.jcg.resource.JCGSetting;
 import com.brshstudio.jcg.ui.setting.layout.SettingLayout;
@@ -25,12 +28,12 @@ public class ModelArgsSettingsPanel extends AbstractSettingsPanel {
     /**
      * 提示面板
      */
-    private JPanel promptPanel;
+    private I18nPanel promptPanel;
 
     /**
      * 参数面板
      */
-    private JPanel argsPanel;
+    private I18nPanel argsPanel;
 
     /**
      * AI主机地址
@@ -88,14 +91,14 @@ public class ModelArgsSettingsPanel extends AbstractSettingsPanel {
      */
     public void promptPanel(SettingLayout settingLayout, AbstractSettingsPanel that) {
         if (promptPanel == null) {
-            promptPanel = new JPanel(new GridBagLayout());
+            promptPanel = new I18nPanel(new GridBagLayout());
             SettingsLayoutUtil.addSectionTitle(promptPanel, "提示词设置");
             classPrompt.setText(JCGSetting.JCG_SETTING_CLASS_PROMPT);
-            SettingsLayoutUtil.addLabeledComponent(promptPanel, "类提示词：", setupPromptTextArea(classPrompt, JCGSetting.defaultClassPrompt, "第一个参数为类名"));
+            SettingsLayoutUtil.addLabeledComponent(promptPanel, "类提示词", setupPromptTextArea(classPrompt, JCGSetting.defaultClassPrompt, "第一个参数为类名"));
             methodPrompt.setText(JCGSetting.JCG_SETTING_METHOD_PROMPT);
-            SettingsLayoutUtil.addLabeledComponent(promptPanel, "方法提示词：", setupPromptTextArea(methodPrompt, JCGSetting.defaultMethodPrompt, "第一个参数为方法定义名"));
+            SettingsLayoutUtil.addLabeledComponent(promptPanel, "方法提示词", setupPromptTextArea(methodPrompt, JCGSetting.defaultMethodPrompt, "第一个参数为方法定义名"));
             fieldPrompt.setText(JCGSetting.JCG_SETTING_FIELD_PROMPT);
-            SettingsLayoutUtil.addLabeledComponent(promptPanel, "字段提示词：", setupPromptTextArea(fieldPrompt, JCGSetting.defaultFieldPrompt, "第一个参数为字段名"));
+            SettingsLayoutUtil.addLabeledComponent(promptPanel, "字段提示词", setupPromptTextArea(fieldPrompt, JCGSetting.defaultFieldPrompt, "第一个参数为字段名"));
         }
         SettingsLayoutUtil.addComponentRow(that, promptPanel);
     }
@@ -105,16 +108,16 @@ public class ModelArgsSettingsPanel extends AbstractSettingsPanel {
      */
     public void modelArgsPanel(SettingLayout settingLayout, AbstractSettingsPanel that) {
         if (argsPanel == null) {
-            argsPanel = new JPanel(new GridBagLayout());
+            argsPanel = new I18nPanel(new GridBagLayout());
             SettingsLayoutUtil.addSectionTitle(argsPanel, "模型参数设置");
             aiHost.setText(JCGSetting.JCG_SETTING_AI_HOST);
             aiModel.setText(JCGSetting.JCG_SETTING_AI_MODEL);
             aiMaxConcurrent.setValue(JCGSetting.JCG_SETTING_AI_TASK_NUM);
             aiTimeout.setValue(JCGSetting.JCG_SETTING_AI_TASK_TIMEOUT);
-            SettingsLayoutUtil.addLabeledComponent(argsPanel, "AI 地址：", aiHost);
-            SettingsLayoutUtil.addLabeledComponent(argsPanel, "AI 模型：", aiModel);
-            SettingsLayoutUtil.addLabeledComponent(argsPanel, "AI 最大并发数：", aiMaxConcurrent);
-            SettingsLayoutUtil.addLabeledComponent(argsPanel, "AI 请求超时时间：", aiTimeout);
+            SettingsLayoutUtil.addLabeledComponent(argsPanel, "AI 地址", aiHost);
+            SettingsLayoutUtil.addLabeledComponent(argsPanel, "AI 模型", aiModel);
+            SettingsLayoutUtil.addLabeledComponent(argsPanel, "AI 最大并发数", aiMaxConcurrent);
+            SettingsLayoutUtil.addLabeledComponent(argsPanel, "AI 请求超时时间", aiTimeout);
         }
         SettingsLayoutUtil.addComponentRow(that, argsPanel);
     }
@@ -122,21 +125,21 @@ public class ModelArgsSettingsPanel extends AbstractSettingsPanel {
     /**
      * 设置提示文本区域
      */
-    private JPanel setupPromptTextArea(JTextArea promptComp, String defaultPrompt, String argsTip) {
-        JPanel panel = new JPanel(new BorderLayout(10, 10));
-        panel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0), argsTip));
+    private I18nPanel setupPromptTextArea(JTextArea promptComp, String defaultPrompt, String argsTip) {
+        I18nPanel panel = new I18nPanel(new BorderLayout(10, 10));
+        panel.setBorder(new I18nTitledBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0), argsTip));
         promptComp.setEditable(false);
         promptComp.setLineWrap(true);
         promptComp.setWrapStyleWord(true);
         panel.add(new JScrollPane(promptComp), BorderLayout.CENTER);
-        JPanel buttonPanel = new JPanel();
+        I18nPanel buttonPanel = new I18nPanel();
         buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.Y_AXIS));
         buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         Dimension btnSize = new Dimension(90, 35);
-        JButton edit = new JButton("编辑");
-        JButton clear = new JButton("清空");
-        JButton def = new JButton("恢复默认值");
-        for (JButton btn : new JButton[] { edit, clear, def }) {
+        I18nButton edit = new I18nButton("编辑");
+        I18nButton clear = new I18nButton("清空");
+        I18nButton def = new I18nButton("恢复默认值");
+        for (JButton btn : new I18nButton[] { edit, clear, def }) {
             btn.setMaximumSize(btnSize);
             btn.setAlignmentX(Component.CENTER_ALIGNMENT);
         }

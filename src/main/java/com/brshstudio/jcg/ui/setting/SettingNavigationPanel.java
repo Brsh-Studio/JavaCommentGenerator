@@ -1,13 +1,13 @@
 package com.brshstudio.jcg.ui.setting;
 
+import com.brshstudio.jcg.i18n.jcomponents.I18nPanel;
+import com.brshstudio.jcg.i18n.jcomponents.I18nTree;
 import com.brshstudio.jcg.ui.setting.layout.SettingLayout;
 import com.brshstudio.jcg.ui.setting.panels.base.AbstractSettingsPanel;
 import com.brshstudio.jcg.resource.JCGNavigation;
 import com.brshstudio.jcg.resource.JCGNavigation.SettingNavigation;
-
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeCellRenderer;
 import javax.swing.tree.TreePath;
 import java.awt.*;
 import java.util.List;
@@ -15,16 +15,16 @@ import java.util.List;
 /**
  * 设置导航面板
  */
-public class SettingNavigationPanel extends JPanel {
+public class SettingNavigationPanel extends I18nPanel {
 
     public SettingNavigationPanel(SettingLayout settingLayout) {
         setLayout(new BorderLayout());
         // 创建导航树
         DefaultMutableTreeNode root = buildNavigationTree();
-        JTree navigationTree = new JTree(root);
+        I18nTree navigationTree = new I18nTree(root);
+        navigationTree.setCellRenderer(I18nTree.TREE_CELL_RENDERER);
         navigationTree.setRootVisible(false);
         navigationTree.setShowsRootHandles(true);
-        navigationTree.setCellRenderer(new SettingNavigationCellRenderer());
         // 调整边框以匹配IDEA样式
         navigationTree.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
         navigationTree.addTreeSelectionListener(e -> {
@@ -73,25 +73,6 @@ public class SettingNavigationPanel extends JPanel {
                 parent.add(node);
                 addChildren(node, child.getChildren());
             }
-        }
-    }
-
-    // 自定义TreeCellRenderer以正确显示节点文本
-    private static class SettingNavigationCellRenderer extends DefaultTreeCellRenderer {
-
-        /**
-         * 渲染树节点组件
-         */
-        @Override
-        public Component getTreeCellRendererComponent(JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus) {
-            super.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocus);
-            if (value instanceof DefaultMutableTreeNode) {
-                DefaultMutableTreeNode node = (DefaultMutableTreeNode) value;
-                if (node.getUserObject() instanceof SettingNavigation nav) {
-                    setText(nav.getName());
-                }
-            }
-            return this;
         }
     }
 }

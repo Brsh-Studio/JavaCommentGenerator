@@ -1,15 +1,15 @@
 package com.brshstudio.jcg.ui.layout;
 
+import com.brshstudio.jcg.i18n.jcomponents.I18nPanel;
 import com.brshstudio.jcg.ui.navigation.NavigationPanel;
 import com.brshstudio.jcg.ui.toolbar.QuickToolPanel;
-
 import javax.swing.*;
 import java.awt.*;
 
 /**
  * 顶部面板类
  */
-public class TopPanel extends JPanel {
+public class TopPanel extends I18nPanel {
 
     /**
      * 菜单面板标识

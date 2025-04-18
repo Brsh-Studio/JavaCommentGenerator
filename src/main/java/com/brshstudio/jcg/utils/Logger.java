@@ -1,6 +1,7 @@
 package com.brshstudio.jcg.utils;
 
 import com.brshstudio.jcg.MainApplication;
+import com.brshstudio.jcg.i18n.I18nUtil;
 
 /**
  * 日志记录器接口
@@ -13,7 +14,7 @@ public class Logger {
      * @param message 信息
      */
     public static void printLineLogger(String message) {
-        MainApplication.gui.getLogArea().append(message + "\n");
+        MainApplication.gui.getLogArea().append(I18nUtil.get(message) + "\n");
     }
 
     /**
@@ -22,7 +23,7 @@ public class Logger {
      * @param message 信息
      */
     public static void printLogger(String message) {
-        MainApplication.gui.getLogArea().append(message);
+        MainApplication.gui.getLogArea().append(I18nUtil.get(message));
     }
 
     /**

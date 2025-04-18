@@ -1,5 +1,7 @@
 package com.brshstudio.jcg.ui.layout;
 
+import com.brshstudio.jcg.i18n.I18nUtil;
+import com.brshstudio.jcg.i18n.jcomponents.I18nFrame;
 import lombok.Getter;
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +9,7 @@ import java.awt.*;
 /**
  * 注释生成器GUI 布局
  */
-public class Layout extends JFrame {
+public class Layout extends I18nFrame {
 
     /**
      * 顶部面板标识

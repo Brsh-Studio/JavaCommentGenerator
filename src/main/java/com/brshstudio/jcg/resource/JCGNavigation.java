@@ -1,5 +1,6 @@
 package com.brshstudio.jcg.resource;
 
+import com.brshstudio.jcg.i18n.patch.I18nItem;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -172,7 +173,7 @@ public class JCGNavigation implements Serializable {
      * 设置导航配置
      */
     @ToString
-    public static class SettingNavigation implements Serializable {
+    public static class SettingNavigation implements I18nItem, Serializable {
 
         /**
          * 名称

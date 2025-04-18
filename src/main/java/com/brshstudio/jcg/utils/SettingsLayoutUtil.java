@@ -1,5 +1,8 @@
 package com.brshstudio.jcg.utils;
 
+import com.brshstudio.jcg.i18n.jcomponents.I18nLabel;
+import com.brshstudio.jcg.i18n.jcomponents.I18nPanel;
+import com.brshstudio.jcg.i18n.jcomponents.I18nScrollPane;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -42,16 +45,16 @@ public class SettingsLayoutUtil {
      * @param contentPanel 需要初始化的面板
      * @return 包含滚动条的面板容器
      */
-    public static JScrollPane initContentPanel(JPanel contentPanel) {
+    public static I18nScrollPane initContentPanel(I18nPanel contentPanel) {
         // 使用GridBagLayout代替BoxLayout
         contentPanel.setLayout(new GridBagLayout());
         contentPanel.setBorder(new EmptyBorder(CONTENT_PADDING, CONTENT_PADDING, CONTENT_PADDING, CONTENT_PADDING));
         // 创建中间容器保持顶部对齐
-        JPanel wrapper = new JPanel(new BorderLayout());
+        I18nPanel wrapper = new I18nPanel(new BorderLayout());
         wrapper.setName("wrapper");
         wrapper.add(contentPanel, BorderLayout.NORTH);
         // 创建滚动面板
-        JScrollPane scrollPane = new JScrollPane(wrapper);
+        I18nScrollPane scrollPane = new I18nScrollPane(wrapper);
         scrollPane.setBorder(BorderFactory.createEmptyBorder());
         scrollPane.getVerticalScrollBar().setUnitIncrement(10);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
@@ -67,7 +70,7 @@ public class SettingsLayoutUtil {
      * @param parent 父容器
      * @param title 区域标题
      */
-    public static void addSectionTitle(JPanel parent, String title) {
+    public static void addSectionTitle(I18nPanel parent, String title) {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.anchor = GridBagConstraints.NORTHWEST;
@@ -78,10 +81,10 @@ public class SettingsLayoutUtil {
             gbc.insets.top = SECTION_SPACING;
         }
         // 标题容器
-        JPanel container = new JPanel(new BorderLayout());
+        I18nPanel container = new I18nPanel(new BorderLayout());
         container.setOpaque(false);
         // 标题组件
-        JLabel titleLabel = new JLabel(title);
+        I18nLabel titleLabel = new I18nLabel(title);
         titleLabel.setFont(SECTION_TITLE_FONT);
         titleLabel.setBorder(new EmptyBorder(0, 0, 4, 0));
         // 分隔线
@@ -97,9 +100,9 @@ public class SettingsLayoutUtil {
      * @param parent 父容器（使用GridBagLayout的面板）
      * @param component 要添加的组件
      */
-    public static void addComponentRow(JPanel parent, JComponent component) {
+    public static void addComponentRow(I18nPanel parent, JComponent component) {
         // 自动设置组件尺寸限制
-        if (!(component instanceof JScrollPane)) {
+        if (!(component instanceof I18nScrollPane)) {
             component.setMaximumSize(new Dimension(component.getMaximumSize().width, component.getPreferredSize().height));
         }
         parent.add(component, createGbc());
@@ -111,17 +114,20 @@ public class SettingsLayoutUtil {
      * @param labelText 标签文字
      * @param component 要添加的组件
      */
-    public static void addLabeledComponent(JPanel parent, String labelText, JComponent component, FieldDirection direction) {
-        JPanel rowPanel = new JPanel(new BorderLayout(10, 0));
+    public static void addLabeledComponent(I18nPanel parent, String labelText, JComponent component, FieldDirection direction, boolean isNonColon) {
+        I18nPanel rowPanel = new I18nPanel(new BorderLayout(10, 0));
         rowPanel.setOpaque(false);
-        JLabel label = new JLabel(labelText);
+        I18nLabel label = new I18nLabel(labelText);
+        if (!isNonColon) {
+            label.setAutoAppendColon(true);
+        }
         label.setLabelFor(component);
         label.setPreferredSize(new Dimension(LABEL_WIDTH, label.getPreferredSize().height));
         component.setMaximumSize(new Dimension(MAX_INPUT_WIDTH, component.getPreferredSize().height));
         if (direction.equals(FieldDirection.NORTH)) {
-            JPanel jPanel = new JPanel(new BorderLayout());
-            jPanel.add(label, BorderLayout.NORTH);
-            rowPanel.add(jPanel, BorderLayout.WEST);
+            I18nPanel i18nPanel = new I18nPanel(new BorderLayout());
+            i18nPanel.add(label, BorderLayout.NORTH);
+            rowPanel.add(i18nPanel, BorderLayout.WEST);
         } else {
             rowPanel.add(label, BorderLayout.WEST);
         }
@@ -130,13 +136,23 @@ public class SettingsLayoutUtil {
     }
 
     /**
-     * 添加带有标签的组件行
+     * 添加带有标签的组件行 (不包含冒号)
      * @param parent 父容器
      * @param labelText 标签文字
      * @param component 要添加的组件
      */
-    public static void addLabeledComponent(JPanel parent, String labelText, JComponent component) {
-        addLabeledComponent(parent, labelText, component, FieldDirection.NORTH);
+    public static void addLabeledComponent(I18nPanel parent, String labelText, JComponent component) {
+        addLabeledComponent(parent, labelText, component, FieldDirection.NORTH, false);
+    }
+
+    /**
+     * 添加带有标签的组件行 (包含冒号)
+     * @param parent 父容器
+     * @param labelText 标签文字
+     * @param component 要添加的组件
+     */
+    public static void addLabeledAndNonColonComponent(I18nPanel parent, String labelText, JComponent component) {
+        addLabeledComponent(parent, labelText, component, FieldDirection.NORTH, true);
     }
 
     /**

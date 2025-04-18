@@ -1,5 +1,6 @@
 package com.brshstudio.jcg.ui;
 
+import com.brshstudio.jcg.i18n.LanguageController;
 import com.brshstudio.jcg.ui.layout.Layout;
 
 /**
@@ -8,6 +9,13 @@ import com.brshstudio.jcg.ui.layout.Layout;
 public class JCGUI extends Layout {
 
     public JCGUI() {
+        super();
+        LanguageController.registerContainer(this);
     }
 
+    @Override
+    public void dispose() {
+        LanguageController.removeContainer(this);
+        super.dispose();
+    }
 }

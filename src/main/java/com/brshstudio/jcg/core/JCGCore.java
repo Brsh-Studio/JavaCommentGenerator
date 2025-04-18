@@ -108,7 +108,7 @@ public class JCGCore {
                 taskQueue.add(() -> {
                     Logger.printLineLogger("处理标识：" + key);
                     process(key, value);
-                    bottomPanel.setProgress("处理进度:", sum + (single * i.incrementAndGet()));
+                    bottomPanel.setProgress("处理进度", sum + (single * i.incrementAndGet()));
                 });
             }
         }

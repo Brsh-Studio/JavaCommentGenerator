@@ -1,12 +1,13 @@
 package com.brshstudio.jcg.ui.setting.panels.base;
 
+import com.brshstudio.jcg.i18n.jcomponents.I18nPanel;
 import com.brshstudio.jcg.ui.setting.layout.SettingLayout;
 import javax.swing.*;
 
 /**
  * 抽象设置面板
  */
-public abstract class AbstractSettingsPanel extends JPanel {
+public abstract class AbstractSettingsPanel extends I18nPanel {
 
     /**
      * 初始化组件

@@ -1,6 +1,10 @@
 package com.brshstudio.jcg.ui.toolbar;
 
 import com.brshstudio.jcg.MainApplication;
+import com.brshstudio.jcg.i18n.jcomponents.I18nButton;
+import com.brshstudio.jcg.i18n.jcomponents.I18nComboBox;
+import com.brshstudio.jcg.i18n.jcomponents.I18nLabel;
+import com.brshstudio.jcg.i18n.jcomponents.I18nPanel;
 import com.brshstudio.jcg.resource.JCGSetting;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -10,12 +14,12 @@ import java.io.File;
 /**
  * 快速工具面板
  */
-public class QuickToolPanel extends JPanel {
+public class QuickToolPanel extends I18nPanel {
 
     /**
      * 模块选择框
      */
-    private final JComboBox<String> moduleComboBox;
+    private final I18nComboBox<String> moduleComboBox;
 
     /**
      * 路径标识
@@ -25,11 +29,11 @@ public class QuickToolPanel extends JPanel {
     public QuickToolPanel() {
         // 测试行布局换行
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
-        JLabel moduleLabel = new JLabel("模块:");
-        moduleComboBox = new JComboBox<>(getModuleNames());
-        JLabel pathLabel = new JLabel("路径:");
+        I18nLabel moduleLabel = new I18nLabel("模块", true);
+        moduleComboBox = new I18nComboBox<>(getModuleNames());
+        I18nLabel pathLabel = new I18nLabel("路径", true);
         pathField = new JTextField();
-        JButton browseBtn = new JButton("浏览");
+        I18nButton browseBtn = new I18nButton("浏览");
         add(moduleLabel);
         add(moduleComboBox);
         add(pathLabel);

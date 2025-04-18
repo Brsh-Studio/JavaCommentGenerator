@@ -1,5 +1,6 @@
 package com.brshstudio.jcg.ui.setting.layout;
 
+import com.brshstudio.jcg.i18n.jcomponents.I18nPanel;
 import com.brshstudio.jcg.ui.setting.panels.GeneralSettingsPanel;
 import com.brshstudio.jcg.ui.setting.panels.base.AbstractSettingsPanel;
 import com.brshstudio.jcg.resource.JCGNavigation;
@@ -32,7 +33,7 @@ public class SettingLayout extends JDialog {
      * 主面板
      */
     @Getter
-    public final JPanel mainPanel;
+    public final I18nPanel mainPanel;
 
     /**
      * 面板缓存
@@ -54,7 +55,7 @@ public class SettingLayout extends JDialog {
     public SettingLayout(JFrame parent) {
         super(parent, "设置", true);
         List<JCGNavigation.SettingNavigation> navigations = JCGNavigation.getSettingNavigationConfig();
-        this.mainPanel = new JPanel(new BorderLayout());
+        this.mainPanel = new I18nPanel(new BorderLayout());
         this.buttonPanel = new ButtomPanel();
         this.nameToPanelMap = createNameToPanelMap(navigations);
         this.panelSuppliers = getSettingChildrenPanels(navigations);
@@ -136,11 +137,11 @@ public class SettingLayout extends JDialog {
      */
     private void initializeUI() {
         // 主面板
-        JPanel panel = new JPanel(new BorderLayout());
+        I18nPanel panel = new I18nPanel(new BorderLayout());
         panel.setBorder(new EmptyBorder(0, 20, 15, 20));
         JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
         // 左侧导航面板
-        JPanel leftPanel = new SettingNavigationPanel(this);
+        I18nPanel leftPanel = new SettingNavigationPanel(this);
         // 右侧配置面板
         // 默认第一个面板
         mainPanel.add(getPanel(GeneralSettingsPanel.class).getMainPanel());
@@ -170,6 +171,6 @@ public class SettingLayout extends JDialog {
             panel.applySettings();
         }
         JCGSetting.save();
-        dispose();
+//        dispose();
     }
 }

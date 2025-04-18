@@ -1,8 +1,8 @@
 package com.brshstudio.jcg;
 
+import com.brshstudio.jcg.i18n.I18nUtil;
 import com.brshstudio.jcg.ui.JCGUI;
 import com.brshstudio.jcg.resource.JCGSetting;
-
 import javax.swing.*;
 
 /**
@@ -17,9 +17,12 @@ public class MainApplication {
 
     // 在 main 方法中调用
     public static void main(String[] args) {
+        // 根据系统默认语言初始化
+        //        Locale defaultLocale = Locale.getDefault();
         SwingUtilities.invokeLater(() -> {
             try {
                 JCGSetting.load();
+                I18nUtil.init(JCGSetting.JCG_SETTING_SYSTEM_LANGUAGE.getLocale());
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }

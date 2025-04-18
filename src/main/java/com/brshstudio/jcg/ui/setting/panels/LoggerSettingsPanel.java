@@ -1,5 +1,8 @@
 package com.brshstudio.jcg.ui.setting.panels;
 
+import com.brshstudio.jcg.i18n.jcomponents.I18nCheckBox;
+import com.brshstudio.jcg.i18n.jcomponents.I18nComboBox;
+import com.brshstudio.jcg.i18n.jcomponents.I18nPanel;
 import com.brshstudio.jcg.ui.setting.panels.base.AbstractSettingsPanel;
 import com.brshstudio.jcg.resource.JCGSetting;
 import com.brshstudio.jcg.ui.setting.layout.SettingLayout;
@@ -23,17 +26,17 @@ public class LoggerSettingsPanel extends AbstractSettingsPanel {
     /**
      * 主题选择框
      */
-    private final JComboBox<String> themeComboBox = new JComboBox<>();
+    private final I18nComboBox<String> themeComboBox = new I18nComboBox<>();
 
     /**
      * 是否覆盖注释
      */
-    private final JCheckBox isAISaveOutputComment = new JCheckBox("是否保存输出注释");
+    private final I18nCheckBox isAISaveOutputComment = new I18nCheckBox("是否保存输出注释");
 
     /**
      * 是否AI打印备注
      */
-    private final JCheckBox isAIPrintComment = new JCheckBox("是否打印输出注释");
+    private final I18nCheckBox isAIPrintComment = new I18nCheckBox("是否打印输出注释");
 
     /**
      * AI输出路径
@@ -43,12 +46,12 @@ public class LoggerSettingsPanel extends AbstractSettingsPanel {
     /**
      * 其他设置面板
      */
-    private JPanel loggerPanel;
+    private I18nPanel loggerPanel;
 
     /**
      * 主题面板
      */
-    private JPanel themePanel;
+    private I18nPanel themePanel;
 
     public LoggerSettingsPanel(SettingLayout settingLayout) {
         // 初始化主面板
@@ -74,14 +77,14 @@ public class LoggerSettingsPanel extends AbstractSettingsPanel {
             isAISaveOutputComment.setSelected(JCGSetting.JCG_SETTING_IS_SAVE_AI_OUTPUT);
             isAIPrintComment.setSelected(JCGSetting.JCG_SETTING_IS_PRINT_AI_OUTPUT);
             aiOutputPath.setText(JCGSetting.JCG_SETTING_AI_OUTPUT_PATH);
-            loggerPanel = new JPanel(new GridBagLayout());
-            JPanel jPanel = new JPanel();
+            loggerPanel = new I18nPanel(new GridBagLayout());
+            I18nPanel jPanel = new I18nPanel();
             jPanel.setLayout(new BoxLayout(jPanel, BoxLayout.X_AXIS));
             jPanel.add(isAISaveOutputComment);
             jPanel.add(isAIPrintComment);
             SettingsLayoutUtil.addSectionTitle(loggerPanel, "日志配置");
             SettingsLayoutUtil.addComponentRow(loggerPanel, jPanel);
-            SettingsLayoutUtil.addLabeledComponent(loggerPanel, "AI 日志输出位置：", aiOutputPath);
+            SettingsLayoutUtil.addLabeledComponent(loggerPanel, "AI 日志输出位置", aiOutputPath);
         }
         SettingsLayoutUtil.addComponentRow(that, loggerPanel);
     }

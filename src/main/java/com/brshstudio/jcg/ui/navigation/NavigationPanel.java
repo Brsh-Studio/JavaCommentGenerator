@@ -1,10 +1,13 @@
 package com.brshstudio.jcg.ui.navigation;
 
 import com.brshstudio.jcg.MainApplication;
+import com.brshstudio.jcg.i18n.jcomponents.I18nMenu;
+import com.brshstudio.jcg.i18n.jcomponents.I18nMenuBar;
+import com.brshstudio.jcg.i18n.jcomponents.I18nMenuItem;
+import com.brshstudio.jcg.i18n.jcomponents.I18nPanel;
 import com.brshstudio.jcg.resource.JCGNavigation;
 import com.brshstudio.jcg.resource.JCGNavigation.Navigation;
 import com.brshstudio.jcg.ui.setting.SettingsDialog;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -15,7 +18,7 @@ import java.util.List;
 /**
  * 支持配置化的导航栏
  */
-public class NavigationPanel extends JPanel {
+public class NavigationPanel extends I18nPanel {
 
     public NavigationPanel() {
         initMenuBar();
@@ -26,7 +29,7 @@ public class NavigationPanel extends JPanel {
      */
     private void initMenuBar() {
         setLayout(new BorderLayout());
-        JMenuBar menuBar = new JMenuBar();
+        I18nMenuBar menuBar = new I18nMenuBar();
         menuBar.setBackground(new Color(0, 0, 0, 0));
         try {
             List<Navigation> navConfig = JCGNavigation.getNavigationConfig();
@@ -46,7 +49,7 @@ public class NavigationPanel extends JPanel {
             if (nav.getChildren().isEmpty()) {
                 parent.add(createMenuItem(nav));
             } else {
-                JMenu menu = createMenu(nav);
+                I18nMenu menu = createMenu(nav);
                 parent.add(menu);
                 buildMenuFromConfig(menu, nav.getChildren());
             }
@@ -56,8 +59,8 @@ public class NavigationPanel extends JPanel {
     /**
      * 创建带图标的菜单项
      */
-    private JMenuItem createMenuItem(Navigation nav) {
-        JMenuItem item = new JMenuItem(nav.getName());
+    private I18nMenuItem createMenuItem(Navigation nav) {
+        I18nMenuItem item = new I18nMenuItem(nav.getName());
         // 动态绑定 Action
         if (nav.getAction() != null && !nav.getAction().isEmpty()) {
             item.addActionListener(e -> invokeActionMethod(nav.getAction(), e));
@@ -77,8 +80,8 @@ public class NavigationPanel extends JPanel {
     /**
      * 创建带子菜单的父级菜单
      */
-    private JMenu createMenu(Navigation nav) {
-        JMenu menu = new JMenu(nav.getName());
+    private I18nMenu createMenu(Navigation nav) {
+        I18nMenu menu = new I18nMenu(nav.getName());
         // 可显示调试信息
         menu.setToolTipText(nav.getAction());
         return menu;

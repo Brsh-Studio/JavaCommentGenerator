@@ -1,7 +1,7 @@
-# JavaCommentGenerator
+# **Java Comment Generator**
 
-## 项目介绍
-JavaCommentGenerator It is a Java code comment generation tool based on a graphical interface, which automatically generates JavaDoc through class declarations, method declarations, and field declarations。
+## Project Introduction
+**Java Comment Generator** It is a Java code comment generation tool based on a graphical interface, which automatically generates JavaDoc through class declarations, method declarations, and field declarations。
 
 ## Features
 ✅ AI prompt word customization

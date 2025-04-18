@@ -1,7 +1,10 @@
 package com.brshstudio.jcg.resource;
 
 import com.brshstudio.jcg.core.JCGCore;
+import com.brshstudio.jcg.enums.SystemLanguage;
 import com.brshstudio.jcg.enums.SystemTheme;
+import com.brshstudio.jcg.i18n.I18nUtil;
+import com.brshstudio.jcg.i18n.LanguageController;
 import com.brshstudio.jcg.theme.GlobalDarkTheme;
 import com.brshstudio.jcg.theme.GlobalLightTheme;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -11,6 +14,7 @@ import java.io.File;
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 /**
@@ -22,6 +26,11 @@ public class JCGSetting implements Serializable {
      * 是否保存AI输出
      */
     public static boolean JCG_SETTING_IS_SAVE_AI_OUTPUT = false;
+
+    /**
+     * 获取系统语言设置
+     */
+    public static SystemLanguage JCG_SETTING_SYSTEM_LANGUAGE = SystemLanguage.fromLocale(Locale.getDefault());
 
     /**
      * AI输出路径
@@ -154,6 +163,17 @@ public class JCGSetting implements Serializable {
         mapper.writeValue(new File(CONFIG_FILE), configMap);
         // 保存配置文件后重新加载主题
         reloadTheme();
+        reloadLanguage();
+    }
+
+    /**
+     * 重新加载语言资源
+     */
+    private static void reloadLanguage() {
+        if (I18nUtil.getCurrentLocale() != JCG_SETTING_SYSTEM_LANGUAGE.getLocale()) {
+            I18nUtil.init(JCG_SETTING_SYSTEM_LANGUAGE.getLocale());
+            LanguageController.switchLanguage(JCG_SETTING_SYSTEM_LANGUAGE.getLocale());
+        }
     }
 
     /**
